@@ -1,7 +1,7 @@
 {
   "name": "p2p-workshop",
   "version": "1.0.0",
-  "description": "following along with https://mafintosh.github.io/p2p-workshop/build/02.html",
+  "description": "following along with https://mafintosh.github.io/p2p-workshop/",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
