@@ -1,13 +1,10 @@
 var net = require('net');
+var socket = net.connect(10000, 'localhost');
 
-var client = net.connect({
-  port: 8214
-}, function () {
-  process.stdin.on('data', function (data) {
-    client.write(data);
-  });
+process.stdin.on('data', function (data) {
+  socket.write(data);
 });
 
-client.on('data', function (data) {
+socket.on('data', function (data) {
   process.stdout.write(data);
-})
+});
