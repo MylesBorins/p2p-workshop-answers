@@ -1,0 +1,20 @@
+{
+  "name": "p2p-workshop",
+  "version": "1.0.0",
+  "description": "following along with https://mafintosh.github.io/p2p-workshop/build/02.html",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheAlphaNerd/p2p-workshop.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TheAlphaNerd/p2p-workshop/issues"
+  },
+  "homepage": "https://github.com/TheAlphaNerd/p2p-workshop#readme"
+}
