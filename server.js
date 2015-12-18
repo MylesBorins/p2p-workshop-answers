@@ -1,19 +1,24 @@
-var net = require('net');
+var net = require('net')
+var jsonStream = require('duplex-json-stream')
+var streamSet = require('stream-set')
+var register = require('register-multicast-dns')
 
-var streamSet = require('stream-set');
-
-var activeSockets = streamSet();
+var hostname = process.argv[2] || 'anon'
+var clients = streamSet()
 
 var server = net.createServer(function (socket) {
-  activeSockets.add(socket);
-  console.log('new connection');
-  socket.on('data', function (data) {
-    activeSockets.forEach(function (sock) {
-      if (sock !== socket) {
-        sock.write(data);
-      }
-    });
-  });
-});
+  console.log('new connection')
+  socket = jsonStream(socket)
+  clients.forEach(function (client) {
+    socket.on('data', function (data) {
+      client.write(data)
+    })
+    client.on('data', function (data) {
+      socket.write(data)
+    })
+  })
+  clients.add(socket)
+})
 
-server.listen(10000);
+register(hostname)
+server.listen(10000)
